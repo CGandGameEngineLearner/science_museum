@@ -26,91 +26,97 @@
 
         </FrameLayout>
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/slideshowFrame"
             android:background="@color/colorPrimary"
             android:padding="16dp">
 
-            <!-- Label for schedule -->
-            <TextView
-                android:id="@+id/label_schedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="开放时间"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
-
-            <!-- Start time block -->
-            <LinearLayout
-                android:id="@+id/start_time_block"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <!-- Label for schedule -->
+                <TextView
+                    android:id="@+id/label_schedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开放时间"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp" />
+            <RelativeLayout
+                android:id="@+id/schedule_relativelayout"
                 android:layout_below="@id/label_schedule"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:background="#33ffffff"
-                android:padding="8dp">
-
-                <TextView
-                    android:id="@+id/label_start_time"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!-- Start time block -->
+                <LinearLayout
+                    android:id="@+id/start_time_block"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="09:00"
-                    android:textColor="#ffffff"
-                    android:textSize="24sp" />
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:background="#33ffffff"
+                    android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/label_start_time_suffix"
+                    <TextView
+                        android:id="@+id/label_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="09:00"
+                        android:textColor="#ffffff"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/label_start_time_suffix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开始时间"
+                        android:layout_marginStart="4dp"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <!-- End time block -->
+                <LinearLayout
+                    android:id="@+id/end_time_block"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="开始时间"
-                    android:layout_marginStart="4dp"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                    android:layout_toEndOf="@id/start_time_block"
+                    android:layout_marginStart="16dp"
+                    android:layout_alignTop="@id/start_time_block"
+                    android:orientation="horizontal"
+                    android:background="#33ffffff"
+                    android:padding="8dp">
 
-            <!-- End time block -->
-            <LinearLayout
-                android:id="@+id/end_time_block"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/start_time_block"
-                android:layout_marginStart="16dp"
-                android:layout_alignTop="@id/start_time_block"
-                android:orientation="horizontal"
-                android:background="#33ffffff"
-                android:padding="8dp">
+                    <TextView
+                        android:id="@+id/label_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="17:00"
+                        android:textColor="#ffffff"
+                        android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/label_end_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="17:00"
-                    android:textColor="#ffffff"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/label_end_time_suffix"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="结束时间"
-                    android:layout_marginStart="4dp"
-                    android:textColor="#ffffff"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <!-- Description or hint text -->
+                    <TextView
+                        android:id="@+id/label_end_time_suffix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结束时间"
+                        android:layout_marginStart="4dp"
+                        android:textColor="#ffffff"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
             <TextView
                 android:id="@+id/schedule_hint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/start_time_block"
+                android:layout_below="@id/schedule_relativelayout"
                 android:layout_marginTop="8dp"
                 android:text="周一、周二闭馆，法定节假日开闭馆时间另行公告"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
         </RelativeLayout>
+
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,7 +134,7 @@
                 android:id="@+id/news_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
+                android:padding="5dp"
                 android:scrollbars="vertical" />
 
         </LinearLayout>
