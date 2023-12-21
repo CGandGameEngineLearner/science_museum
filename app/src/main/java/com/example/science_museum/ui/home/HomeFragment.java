@@ -6,6 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +18,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Handler;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.science_museum.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -33,7 +38,8 @@ public class HomeFragment extends Fragment {
     private int[] mSlideIds;
     private HandlerThread backgroundThread;
     private Handler backgroundHandler;
-    private ArrayList<ImageView> mSlideImages=new ArrayList<>();;
+    private ArrayList<ImageView> mSlideImages=new ArrayList<>();
+    private RecyclerView mNewsRecyclerView;
 
     class SlidesViewAdapter extends PagerAdapter{
 
@@ -83,7 +89,67 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mView=inflater.inflate(R.layout.fragment_home, container, false);
         initSlides();
+
         return mView;
+    }
+
+    void  initNews()
+    {
+        mNewsRecyclerView=mView.findViewById(R.id.news_recycler_view);
+        mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mNewsRecyclerView.setLayoutManager(layoutManager);
+
+    }
+
+    public class NewsEntryViewHolder extends RecyclerView.ViewHolder {
+        private TextView title,month_and_day,year,summary;
+        public NewsEntryViewHolder(View v) {
+            super(v);
+
+            title = v.findViewById(R.id.title);
+            month_and_day=v.findViewById(R.id.month_and_day);
+            summary=v.findViewById(R.id.summary);
+            year=v.findViewById(R.id.year);
+            Log.d("NewsEntryViewHolder",title.toString());
+        }
+    }
+    public class NewsEntriesAdapter extends RecyclerView.Adapter<NewsEntryViewHolder> {
+        private List<HomeViewModel.News> mDataset;
+
+        // Provide a suitable constructor (depends on the kind of dataset)
+        public NewsEntriesAdapter(List<HomeViewModel.News> myDataset) {
+            mDataset = myDataset;
+        }
+
+        // Create new views (invoked by the layout manager)
+        @NonNull
+        @Override
+        public NewsEntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            // Use LayoutInflater to correctly handle the layout parameters
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_news_entry, parent, false);
+            NewsEntryViewHolder vh = new NewsEntryViewHolder(v);
+            return vh;
+        }
+
+
+        // Replace the contents of a view (invoked by the layout manager)
+        @Override
+        public void onBindViewHolder(@NonNull NewsEntryViewHolder holder, int position) {
+            // - get element from your dataset at this position
+            // - replace the contents of the view with that element
+            holder.title.setText(mDataset.get(position).title);
+            String[] dateArray = mDataset.get(position).date.split("-");
+            holder.month_and_day.setText(dateArray[1]+"/"+dateArray[2]);
+            holder.year.setText(dateArray[0]);
+            holder.summary.setText(mDataset.get(position).summary);
+        }
+
+        // Return the size of your dataset (invoked by the layout manager)
+        @Override
+        public int getItemCount() {
+            return mDataset.size();
+        }
     }
 
     @Override
@@ -91,6 +157,8 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         // TODO: Use the ViewModel
+
+        initNews();
     }
 
     private void initSlides()

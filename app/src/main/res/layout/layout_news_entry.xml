@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:orientation="horizontal"
+    android:background="@color/colorPrimary"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_toRightOf="@+id/date"
+        android:orientation="vertical"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/month_and_day"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:maxLines="2"
+            android:text="日期"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLines="2"
+            android:layout_below="@+id/month_and_day"
+            android:text="年份"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_toRightOf="@+id/date"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="新闻标题" />
+
+        <TextView
+            android:id="@+id/summary"
+            android:layout_below="@+id/title"
+            android:text="新闻摘要"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:layout_height="35dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</LinearLayout>
