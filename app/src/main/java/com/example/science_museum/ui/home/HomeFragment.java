@@ -31,7 +31,6 @@ public class HomeFragment extends Fragment {
     private ViewPager mSlidePagerView;
     private View mView;
     private int[] mSlideIds;
-    private boolean mSlideshowRunning;
     private HandlerThread backgroundThread;
     private Handler backgroundHandler;
     private ArrayList<ImageView> mSlideImages=new ArrayList<>();;
