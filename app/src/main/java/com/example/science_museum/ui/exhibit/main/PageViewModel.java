@@ -1,4 +1,4 @@
-package com.example.science_museum.ui.main;
+package com.example.science_museum.ui.exhibit.main;
 
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;

@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.science_museum.R;
-import com.example.science_museum.ui.main.SectionsPagerAdapter;
+import com.example.science_museum.ui.exhibit.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class ExhibitFragment extends Fragment {

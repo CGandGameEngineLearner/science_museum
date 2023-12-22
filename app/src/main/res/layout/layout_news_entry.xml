@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/newsEntryLayout"
     android:layout_height="53dp"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="horizontal"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/blue_click_border"
     android:padding="5dp">
 
     <RelativeLayout

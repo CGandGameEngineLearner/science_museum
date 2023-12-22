@@ -1,5 +1,6 @@
 package com.example.science_museum.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.util.Log;
@@ -17,10 +18,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Handler;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.science_museum.R;
+import com.example.science_museum.ui.common.ArticleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +37,7 @@ public class HomeFragment extends Fragment {
         return new HomeFragment();
     }
 
+    private Button mMoreNewsButton;
     private ViewPager mSlidePagerView;
     private View mView;
     private int[] mSlideIds;
@@ -71,12 +76,10 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 3;   //返回一个无限大的值，可以 无限循环!!!!!
+            return imageViewList.size();
         }
 
-        /**
-         * 判断是否使用缓存, 如果返回的是true, 使用缓存. 不去调用instantiateItem方法创建一个新的对象
-         */
+
         @Override
         public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
             return view == o ;
@@ -89,11 +92,17 @@ public class HomeFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         mView=inflater.inflate(R.layout.fragment_home, container, false);
         initSlides();
-
+        initButtons();
         return mView;
     }
 
-    void  initNews()
+    private void initButtons()
+    {
+        mMoreNewsButton=mView.findViewById(R.id.moreNewsButton);
+
+    }
+
+    private void  initNews()
     {
         mNewsRecyclerView=mView.findViewById(R.id.news_recycler_view);
         mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews()));
@@ -102,20 +111,34 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public class NewsEntryViewHolder extends RecyclerView.ViewHolder {
-        private TextView title,month_and_day,year,summary;
-        public NewsEntryViewHolder(View v) {
-            super(v);
 
-            title = v.findViewById(R.id.title);
-            month_and_day=v.findViewById(R.id.month_and_day);
-            summary=v.findViewById(R.id.summary);
-            year=v.findViewById(R.id.year);
-            Log.d("NewsEntryViewHolder",title.toString());
-        }
-    }
-    public class NewsEntriesAdapter extends RecyclerView.Adapter<NewsEntryViewHolder> {
+    public class NewsEntriesAdapter extends RecyclerView.Adapter<NewsEntriesAdapter.NewsEntryViewHolder> {
         private List<HomeViewModel.News> mDataset;
+        public class NewsEntryViewHolder extends RecyclerView.ViewHolder {
+            private TextView title,month_and_day,year,summary;
+            public HomeViewModel.News news;
+            private LinearLayout newsEntryLayout;
+            public NewsEntryViewHolder(View v) {
+                super(v);
+                newsEntryLayout=v.findViewById(R.id.newsEntryLayout);
+                newsEntryLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 进入新闻详细界面
+                        Intent intentArticle=new Intent(getActivity(), ArticleActivity.class);
+                        intentArticle.putExtra("title",news.title);
+                        intentArticle.putExtra("date",news.date);
+                        intentArticle.putExtra("content",news.content);
+                        startActivity(intentArticle);
+                    }
+                });
+                title = v.findViewById(R.id.title);
+                month_and_day=v.findViewById(R.id.month_and_day);
+                summary=v.findViewById(R.id.summary);
+                year=v.findViewById(R.id.year);
+                Log.d("NewsEntryViewHolder",title.toString());
+            }
+        }
 
         // Provide a suitable constructor (depends on the kind of dataset)
         public NewsEntriesAdapter(List<HomeViewModel.News> myDataset) {
@@ -143,6 +166,7 @@ public class HomeFragment extends Fragment {
             holder.month_and_day.setText(dateArray[1]+"/"+dateArray[2]);
             holder.year.setText(dateArray[0]);
             holder.summary.setText(mDataset.get(position).summary);
+            holder.news=mDataset.get(position);
         }
 
         // Return the size of your dataset (invoked by the layout manager)
@@ -185,12 +209,12 @@ public class HomeFragment extends Fragment {
         mSlidePagerView.setCurrentItem(currentPosition);
 
 
-        // 初始化后台线程和处理程序
+
         backgroundThread = new HandlerThread("BackgroundThread");
         backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
-        // 在后台线程中执行轮询任务
+
         backgroundHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -198,17 +222,17 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            // 更新 UI 的代码
+
                             mSlidePagerView.setCurrentItem((mSlidePagerView.getCurrentItem()+1)%mSlideIds.length);
                         }
                     });
                 }
 
-                // 继续下一次轮询
-                backgroundHandler.postDelayed(this, 2000);
+
+                backgroundHandler.postDelayed(this, 5000);
 
             }
-        }, 2000);
+        }, 5000);
         Log.d("Slideshow","start play");
     }
 }
