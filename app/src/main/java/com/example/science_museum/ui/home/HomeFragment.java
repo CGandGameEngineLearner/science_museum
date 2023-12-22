@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.science_museum.ui.home.news.NewsEntriesAdapter;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.example.science_museum.R;
 import com.example.science_museum.ui.common.ArticleActivity;
+import com.example.science_museum.ui.home.news.NewsListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,76 +106,19 @@ public class HomeFragment extends Fragment {
     private void  initNews()
     {
         mNewsRecyclerView=mView.findViewById(R.id.news_recycler_view);
-        mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews()));
+        mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews(),getActivity()));
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mNewsRecyclerView.setLayoutManager(layoutManager);
-
-    }
-
-
-    public class NewsEntriesAdapter extends RecyclerView.Adapter<NewsEntriesAdapter.NewsEntryViewHolder> {
-        private List<HomeViewModel.News> mDataset;
-        public class NewsEntryViewHolder extends RecyclerView.ViewHolder {
-            private TextView title,month_and_day,year,summary;
-            public HomeViewModel.News news;
-            private LinearLayout newsEntryLayout;
-            public NewsEntryViewHolder(View v) {
-                super(v);
-                newsEntryLayout=v.findViewById(R.id.newsEntryLayout);
-                newsEntryLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 进入新闻详细界面
-                        Intent intentArticle=new Intent(getActivity(), ArticleActivity.class);
-                        intentArticle.putExtra("title",news.title);
-                        intentArticle.putExtra("date",news.date);
-                        intentArticle.putExtra("content",news.content);
-                        startActivity(intentArticle);
-                    }
-                });
-                title = v.findViewById(R.id.title);
-                month_and_day=v.findViewById(R.id.month_and_day);
-                summary=v.findViewById(R.id.summary);
-                year=v.findViewById(R.id.year);
-                Log.d("NewsEntryViewHolder",title.toString());
+        mMoreNewsButton=mView.findViewById(R.id.moreNewsButton);
+        mMoreNewsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentNews=new Intent(getActivity(), NewsListActivity.class);
+                startActivity(intentNews);
             }
-        }
-
-        // Provide a suitable constructor (depends on the kind of dataset)
-        public NewsEntriesAdapter(List<HomeViewModel.News> myDataset) {
-            mDataset = myDataset;
-        }
-
-        // Create new views (invoked by the layout manager)
-        @NonNull
-        @Override
-        public NewsEntryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            // Use LayoutInflater to correctly handle the layout parameters
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_news_entry, parent, false);
-            NewsEntryViewHolder vh = new NewsEntryViewHolder(v);
-            return vh;
-        }
-
-
-        // Replace the contents of a view (invoked by the layout manager)
-        @Override
-        public void onBindViewHolder(@NonNull NewsEntryViewHolder holder, int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
-            holder.title.setText(mDataset.get(position).title);
-            String[] dateArray = mDataset.get(position).date.split("-");
-            holder.month_and_day.setText(dateArray[1]+"/"+dateArray[2]);
-            holder.year.setText(dateArray[0]);
-            holder.summary.setText(mDataset.get(position).summary);
-            holder.news=mDataset.get(position);
-        }
-
-        // Return the size of your dataset (invoked by the layout manager)
-        @Override
-        public int getItemCount() {
-            return mDataset.size();
-        }
+        });
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

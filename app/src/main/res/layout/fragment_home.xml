@@ -140,7 +140,7 @@
 
                 <Button
                     android:id="@+id/moreNewsButton"
-                    android:background="@drawable/blue_click_border"
+                    android:background="@drawable/blue_clickable_rectangle_with_big_rounded_corners"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -155,6 +155,31 @@
                 android:padding="5dp"
                 android:scrollbars="vertical" />
 
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_gravity="center"
+                android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+                android:layout_width="300dp"
+                android:text="参观预约"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_height="51dp">
+            </Button>
+
+            <Button
+                android:layout_gravity="center"
+                android:text="关于科技馆"
+                android:textColor="#ffffff"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+                android:layout_width="300dp"
+                android:layout_height="51dp">
+            </Button>
         </LinearLayout>
     </LinearLayout>
 

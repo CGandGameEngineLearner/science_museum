@@ -6,7 +6,7 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="horizontal"
-    android:background="@drawable/blue_click_border"
+    android:background="@drawable/blue_clickable_rectangle_with_big_rounded_corners"
     android:padding="5dp">
 
     <RelativeLayout
