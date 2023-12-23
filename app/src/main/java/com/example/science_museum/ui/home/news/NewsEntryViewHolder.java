@@ -1,7 +1,6 @@
 package com.example.science_museum.ui.home.news;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.science_museum.R;
-import com.example.science_museum.ui.common.ArticleActivity;
+import com.example.science_museum.common.ArticleActivity;
 import com.example.science_museum.ui.home.HomeViewModel;
 
 public class NewsEntryViewHolder extends RecyclerView.ViewHolder {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- 按下状态 -->
+<item android:state_pressed="true">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+        <solid android:color="@color/colorPrimaryLighter" />
+        <stroke android:width="3dp" android:color="@color/colorPrimaryDark" /> <!-- 边框颜色和宽度 -->
+        <corners android:radius="3dp"/> <!-- 圆角半径 -->
+    </shape>
+</item>
+<!-- 默认状态 -->
+<item android:state_pressed="false">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+        <solid android:color="@color/colorPrimaryLighter" />
+        <stroke android:width="2dp" android:color="@color/colorPrimaryLighter" /> <!-- 边框颜色和宽度 -->
+        <corners android:radius="3dp"/> <!-- 圆角半径 -->
+    </shape>
+</item>
+</selector>

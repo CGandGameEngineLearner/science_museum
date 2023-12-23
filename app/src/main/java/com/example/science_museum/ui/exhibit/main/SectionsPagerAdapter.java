@@ -17,7 +17,7 @@ import com.example.science_museum.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.recommend, R.string.app_list,R.string.game_list,R.string.classify};
+    private static final int[] TAB_TITLES = new int[]{R.string.children_s_science_park,R.string.discovery_hall,R.string.wisdom_imagination_hall,R.string.universe_hall};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {

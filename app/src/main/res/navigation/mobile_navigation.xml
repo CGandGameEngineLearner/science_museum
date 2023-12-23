@@ -9,7 +9,7 @@
         android:id="@+id/navigation_home"
         android:name="com.example.science_museum.ui.home.HomeFragment"
         android:label="@string/home_page"
-        tools:layout="@layout/fragment_app_store_home" />
+        tools:layout="@layout/fragment_exhibits" />
 
 
     <fragment
@@ -23,5 +23,5 @@
         android:id="@+id/navigation_mine"
         android:name="com.example.science_museum.ui.mine.MineFragment"
         android:label="@string/mine"
-        tools:layout="@layout/mine_fragment" />
+        tools:layout="@layout/fragment_mine" />
 </navigation>

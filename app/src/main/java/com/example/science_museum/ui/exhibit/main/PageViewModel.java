@@ -30,7 +30,7 @@ public class PageViewModel extends ViewModel {
         }
     });
 
-    static private int mImageRes[]={R.mipmap.tab_1,R.mipmap.tab_2,R.mipmap.tab_2,R.mipmap.tab_2};
+    static private int mImageRes[]={R.mipmap.tab_1,R.mipmap.tab_2,R.mipmap.tab_3,R.mipmap.tab_4};
 
     public void setIndex(int index) {
         mIndex.setValue(index);

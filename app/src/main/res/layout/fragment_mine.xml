@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ui.mine.MineFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/frameLayoutBackground"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/colorPrimary">
+        </FrameLayout>
+        <com.example.science_museum.common.CircularImageView
+            android:id="@+id/profileName"
+            android:layout_marginTop="-200dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/qq_logo" />
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="admin"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- 看不见的中心视图 -->
+            <View
+                android:id="@+id/center_view"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
+
+            <!-- 左边的按钮 -->
+            <Button
+                android:id="@+id/buttonLogin"
+                android:text="登录"
+                android:background="@drawable/lighter_blue_clickable_rectangle_with_small_rounded_corners"
+                android:layout_toLeftOf="@id/center_view"
+                android:textSize="20sp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true" />
+
+            <!-- 右边的按钮 -->
+            <Button
+                android:id="@+id/buttonSignUp"
+                android:textSize="20sp"
+                android:text="注册"
+                android:background="@drawable/lighter_blue_clickable_rectangle_with_small_rounded_corners"
+                android:layout_toRightOf="@id/center_view"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_below="@+id/frameLayoutBackground"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="个人中心"
+            android:textColor="@android:color/black"
+            android:textSize="40sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#F65151" />
+        <!-- 修改设置-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:src="@mipmap/set" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="-50dp"
+            android:text="设置"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+
+        <ImageView
+            android:layout_marginTop="-45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:src="@mipmap/arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="#DDDDDD" />
+
+
+        <!-- 修改密码-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:src="@mipmap/password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="-50dp"
+            android:text="修改密码"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+
+        <ImageView
+            android:layout_marginTop="-45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:src="@mipmap/arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="#DDDDDD" />
+
+        <!-- 作品详情-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:src="@mipmap/details" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="-50dp"
+            android:text="作品详情"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+
+        <ImageView
+            android:layout_marginTop="-45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:src="@mipmap/arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="#DDDDDD" />
+
+
+        <!-- 注销-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="start"
+            android:src="@mipmap/off" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="-50dp"
+            android:text="注销"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+
+
+        <ImageView
+            android:layout_marginTop="-45dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:src="@mipmap/arrow" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="#DDDDDD" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

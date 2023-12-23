@@ -1,4 +1,4 @@
-package com.example.science_museum.ui.common;
+package com.example.science_museum.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.science_museum.R;
