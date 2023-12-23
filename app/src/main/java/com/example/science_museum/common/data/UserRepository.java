@@ -77,7 +77,7 @@ public class UserRepository {
             SQLiteDatabase db = mUserDataBaseHelper.getReadableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(KEY_USERNAME, userBean.user_name);
+            values.put(KEY_USERNAME, userBean.username);
             values.put(KEY_PASSWORD, userBean.password); // Ensure password is hashed
             values.put(KEY_TELEPHONE_NUMBER, userBean.telephone_number);
             values.put(KEY_GENDER, userBean.gender);
