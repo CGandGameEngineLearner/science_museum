@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.science_museum.R;
 import com.example.science_museum.common.ArticleActivity;
+import com.example.science_museum.common.data.NewsRepository;
 import com.example.science_museum.ui.home.HomeViewModel;
 
 public class NewsEntryViewHolder extends RecyclerView.ViewHolder {
     public TextView title,month_and_day,year,summary;
     public Activity mParentActivity;
-    public HomeViewModel.News news;
+    public NewsRepository.News news;
     private LinearLayout newsEntryLayout;
     public NewsEntryViewHolder(View v, Activity parentActivity) {
         super(v);

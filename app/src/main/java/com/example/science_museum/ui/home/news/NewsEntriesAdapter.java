@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.science_museum.R;
 
+import com.example.science_museum.common.data.NewsRepository;
 import com.example.science_museum.ui.home.HomeViewModel;
 
 import java.util.List;
@@ -22,12 +23,12 @@ import java.util.List;
 
 
 public class NewsEntriesAdapter extends RecyclerView.Adapter<NewsEntryViewHolder> {
-    private List<HomeViewModel.News> mDataset;
+    private List<NewsRepository.News> mDataset;
     private Activity mParentActivity;
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public NewsEntriesAdapter(List<HomeViewModel.News> myDataset, Activity parentActivity) {
+    public NewsEntriesAdapter(List<NewsRepository.News> myDataset, Activity parentActivity) {
         mDataset = myDataset;
         mParentActivity=parentActivity;
     }

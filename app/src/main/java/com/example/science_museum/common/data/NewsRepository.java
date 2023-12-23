@@ -1,11 +1,14 @@
 package com.example.science_museum.common.data;
 
+import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.example.science_museum.ui.home.HomeViewModel;
 
@@ -21,10 +24,17 @@ public class NewsRepository {
         public String content;
         public String summary;
     }
-    NewsRepository()
+    public NewsRepository(@NonNull Application application)
     {
-        mNewsDataBaseHelper=new NewsDataBaseHelper();
+
+        mNewsDataBaseHelper=new NewsDataBaseHelper(application);
     }
+
+    public List<NewsRepository.News> getAllNews()
+    {
+        return mNewsDataBaseHelper.getAllNews();
+    }
+
     private static NewsDataBaseHelper mNewsDataBaseHelper;
 
     public class NewsDataBaseHelper extends SQLiteOpenHelper {
@@ -41,8 +51,8 @@ public class NewsRepository {
         private static final String KEY_DATE = "date";
         private static final String KEY_SUMMARY = "summary";
 
-        public NewsDataBaseHelper() {
-            super(null,DATABASE_NAME, null, DATABASE_VERSION);
+        public NewsDataBaseHelper(@NonNull Application application) {
+            super(application,DATABASE_NAME, null, DATABASE_VERSION);
         }
 
         @Override
@@ -73,8 +83,8 @@ public class NewsRepository {
         }
 
         // Method to get all news items
-        public List<HomeViewModel.News> getAllNews() {
-            List<News> newsList = new ArrayList<>();
+        public List<NewsRepository.News> getAllNews() {
+            List<NewsRepository.News> newsList = new ArrayList<NewsRepository.News>();
 
 
             SQLiteDatabase db = this.getWritableDatabase();
@@ -119,7 +129,7 @@ public class NewsRepository {
                     newsList.add(news);
                     Log.d("NewsData",String.format("news entries size=%d",newsList.size()));
                     cursor.moveToNext();
-                } ;
+                }
             }
 
             cursor.close();
