@@ -1,4 +1,4 @@
-package com.example.science_museum.common.register_and_login;
+package com.example.science_museum.common.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.science_museum.R;
@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
