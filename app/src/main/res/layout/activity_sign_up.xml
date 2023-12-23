@@ -133,7 +133,7 @@
             >
 
             <Button
-                android:id="@+id/buttonRegister"
+                android:id="@+id/buttonSignUp"
                 android:layout_width="370dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"

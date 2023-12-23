@@ -1,4 +1,4 @@
-package com.example.science_museum.common.login;
+package com.example.science_museum.common.signup;
 
 import android.content.Context;
 
@@ -8,16 +8,13 @@ import androidx.lifecycle.ViewModel;
 import com.example.science_museum.common.data.UserBean;
 import com.example.science_museum.common.data.UserRepository;
 
-public class UserViewModel extends ViewModel {
+public class SignUpViewModel extends ViewModel {
+    private Context mContext;
     private UserRepository mUserRepository;
-    UserViewModel(@NonNull Context context)
-    {
-        mUserRepository=new UserRepository(context);
-    }
 
-    public boolean login(long uid,String password)
-    {
-        return mUserRepository.login(uid,password);
+    public SignUpViewModel(@NonNull Context context) {
+        mContext=context;
+        mUserRepository=new UserRepository(context);
     }
 
     public long signUp(UserBean userBean)

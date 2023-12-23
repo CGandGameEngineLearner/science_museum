@@ -23,6 +23,7 @@ public class UserRepository {
     public UserRepository(@NonNull Context context)
     {
         mContext=context;
+        mUserDataBaseHelper=new UserDataBaseHelper(context);
     }
 
     private UserDataBaseHelper mUserDataBaseHelper;
@@ -32,7 +33,7 @@ public class UserRepository {
         private static final int DATABASE_VERSION=3;
         private static final String TABLE_NAME="users";
         private static final String KEY_UID="uid";
-        private static final String KEY_USERNAME="user_name",KEY_GENDER="gender",KEY_INTERESTS="interests";
+        private static final String KEY_USERNAME="username",KEY_GENDER="gender",KEY_INTERESTS="interests";
         private static final String KEY_TELEPHONE_NUMBER="telephone_number";
         private static final String KEY_PASSWORD="password";
 
@@ -72,7 +73,7 @@ public class UserRepository {
             return loginSuccess;
         }
 
-        protected boolean signUp(UserBean userBean) {
+        protected long signUp(UserBean userBean) {
             userBean.password = hashPassword(userBean.password);//对密码进行加密
             SQLiteDatabase db = mUserDataBaseHelper.getReadableDatabase();
 
@@ -82,19 +83,21 @@ public class UserRepository {
             values.put(KEY_TELEPHONE_NUMBER, userBean.telephone_number);
             values.put(KEY_GENDER, userBean.gender);
             values.put(KEY_INTERESTS,userBean.interests);
-            long result;
+            long uid;
             try {
                 // Inserting Row
-                result=db.insert(TABLE_NAME, null, values);
-                db.close(); // Closing database connection
+                uid=db.insert(TABLE_NAME, null, values);
+                db.close(); // Closing database connection,
+                Log.d("SignUp",String.format("uid=%d",uid));
             }
             catch (SQLiteException e)
             {
                 Log.e("UserRepository SQLiteException","insert new user");
-                return false;
+                return -1;
             }
-            if(result<0)return false;
-            return true;
+            if(uid<0)return -1;
+
+            return uid;
         }
 
         // 哈希函数，用于哈希密码
@@ -130,7 +133,7 @@ public class UserRepository {
         return mUserDataBaseHelper.login(uid,password);
     }
 
-    public boolean signUp(UserBean userBean)
+    public long signUp(UserBean userBean)
     {
        return mUserDataBaseHelper.signUp(userBean);
     }
