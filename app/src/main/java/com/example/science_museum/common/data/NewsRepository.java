@@ -83,7 +83,7 @@ public class NewsRepository {
         }
 
         // Method to get all news items
-        public List<NewsRepository.News> getAllNews() {
+        protected List<NewsRepository.News> getAllNews() {
             List<NewsRepository.News> newsList = new ArrayList<NewsRepository.News>();
 
 

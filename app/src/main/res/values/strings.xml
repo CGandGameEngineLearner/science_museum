@@ -60,7 +60,7 @@
     <string name="gender_colon">性别：</string>
     <string name="phone_number_colon">电话：</string>
     <string name="occupation_colon">职业：</string>
-    <string name="interest_colon">兴趣：</string>
+    <string name="interests_colon">兴趣：</string>
     <string name="login">登录</string>
     <string name="original_password">原密码</string>
     <string name="new_password">新密码</string>
@@ -71,4 +71,5 @@
     <string name="modify">修改</string>
     <string name="username">用户名</string>
     <string name="please_input_password">请输入密码</string>
+    <string name="username_colon">昵称：</string>
 </resources>
