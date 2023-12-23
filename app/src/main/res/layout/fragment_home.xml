@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -164,18 +163,30 @@
             <Button
                 android:layout_gravity="center"
                 android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+                android:id="@+id/visitByAppointmentButton"
                 android:layout_width="300dp"
-                android:text="参观预约"
+                android:text="@string/visit_by_appointment"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_height="51dp">
             </Button>
 
             <Button
                 android:layout_gravity="center"
-                android:text="关于科技馆"
+                android:text="@string/volunteer_recruitment"
+                android:id="@+id/volunteerRecruitmentButton"
                 android:textColor="#ffffff"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+                android:layout_width="300dp"
+                android:layout_height="51dp">
+            </Button>
+            <Button
+                android:layout_gravity="center"
+                android:id="@+id/aboutMuseumButton"
+                android:text="@string/about_museum"
+                android:textColor="#ffffff"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
                 android:layout_width="300dp"
                 android:layout_height="51dp">

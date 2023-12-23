@@ -20,19 +20,16 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Handler;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.science_museum.R;
-import com.example.science_museum.ui.common.ArticleActivity;
 import com.example.science_museum.ui.home.news.NewsListActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel mViewModel;
+    private Button mVisitByAppointmentButton,mVolunteerRecruitmentButton,mAboutMuseumButton;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -100,13 +97,39 @@ public class HomeFragment extends Fragment {
     private void initButtons()
     {
         mMoreNewsButton=mView.findViewById(R.id.moreNewsButton);
+        mVisitByAppointmentButton=mView.findViewById(R.id.visitByAppointmentButton);
+        mVolunteerRecruitmentButton=mView.findViewById(R.id.volunteerRecruitmentButton);
+        mAboutMuseumButton=mView.findViewById(R.id.aboutMuseumButton);
+        mVisitByAppointmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intentVisitByAppointment=new Intent(getActivity(), VisitByAppointmentActivity.class);
+                startActivity(intentVisitByAppointment);
+            }
+        });
+        mVolunteerRecruitmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intentVolunteerRecruitment=new Intent(getActivity(), VolunteerRecruitmentActivity.class);
+                startActivity(intentVolunteerRecruitment);
+            }
+        });
+        mAboutMuseumButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intentAboutMuseum=new Intent(getActivity(),AboutMuseumActivity.class);
+                startActivity(intentAboutMuseum);
+            }
+        });
     }
 
     private void  initNews()
     {
         mNewsRecyclerView=mView.findViewById(R.id.news_recycler_view);
-        mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews(),getActivity()));
+        mNewsRecyclerView.setAdapter(new NewsEntriesAdapter(mViewModel.getAllNews().subList(0,3),getActivity()));
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mNewsRecyclerView.setLayoutManager(layoutManager);
         mMoreNewsButton=mView.findViewById(R.id.moreNewsButton);

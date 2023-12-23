@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.AboutMuseumActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="展馆概况"
+            android:textSize="15sp"
+            android:textColor="#91C8F4" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/about_museum_1" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="南充市科学技术馆是南充市人民政府为推进科普教育事业发展，提升科技服务水平而投资兴建的具有时代特点、南充元素的科普教育基地和精神文明建设基地。
+
+科技馆位于南充市顺庆区滨江北路二段，建筑面积11500㎡，展教面积7600㎡。主要包括公共空间展示区、常设临展厅，儿童科学乐园、探索发现厅、防灾与安全厅、智慧创想厅四大主题展厅、七间科学工作室以及5D影院、科普剧场和科普商店等，设有展品展项200余件。
+
+本着建设精品科技馆的目标，南充市科技馆聚焦国际前沿视野，深挖南充本土元素，秉承“精神与人本主义充分结合，高新技术与综合艺术完美融合，科技展示与科普教育紧密结合”的建馆理念，致力于打造南充科学知识普及中心、科学兴趣培育中心和青少年科学教育综合服务平台，为南充创新驱动发展厚植创新土壤、培育后备人才。"
+            android:textSize="15sp"
+            android:textColor="#000000" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="1F   序厅、儿童科学乐园、科学探秘、生命与健康、自然万象"
+            android:textColor="#278F2B"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/about_museum_2" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2F   防灾与安全、智引未来、天地探秘"
+            android:textColor="#278F2B"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/about_museum_3" />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="3F   科学工作室"
+            android:textColor="#278F2B"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/about_museum_4" />
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>
