@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.science_museum.ui.home.VolunteerRecruitmentActivity">
+    tools:context=".ui.home.VolunteerRecruitmentActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="阅读招募须知"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="14dp" />
+
+        <!-- 招募类型 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="招募类型:科普志愿者和专家志愿者"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 招募条件 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一、招募条件\n
+1.16周岁以上，高中及以上学历;\n
+2.具有良好的思想道德品质、热心公益事业，具有奉献精神\n
+3.有强烈责任心，身心健康，热爱科普公益事业;\n
+4普通话标准，具有较好的沟通表达能力;\n
+5.具有良好的组织纪律性和团队协作精神，愿意服从馆方安排;\n
+7.能适应周末、节假日、寒暑假工作时间，时间相对自由者优先服务内容\n " />
+
+        <!-- 在此处添加所有招募条件的TextView -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="二、服务内容\n
+1.展厅管理:负责引导观众有序参观，引导观众正确操作展品，展品出现故障及时向馆方工作人员报告。\n
+2.活动实施，协助展款辅导员或独立策划、实施专业或长领域的教育活动或科普进座。独立或合作开展定时开放的展项活动，且活动须经官方审核通过。\n
+3.游客服务:包括“票务服务”和“参观咨询”两个岗位。“票务服务”负责指导观众现场网上预约。“参观咨询”岗位则需接受观众现场及电话咨询等。"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+        <!-- 服务时间 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="三、服务时间\n
+周末、法定节假日、寒暑假\n
+9:00-17:00"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- 志愿者行为规范 -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="四、志愿者行为规范\n
+1.自觉接受管理部门安排的岗位和工作，服从调配，如有特殊情况应向管理部门提出。\n
+2.上岗实行签到制度，未签到、签退视服务无效。上岗和离岗时，到志愿者工作办公室签到及签退。\n
+3.准时到岗，不迟到，不早退，不缺勤。\n
+4.在工作岗位上不得无故脱岗，不扎堆闲聊，不得吃东西，不读书看报，不玩手机。如有特殊情况需离开，应取得工作人员同意。\n
+5.在岗期间需佩戴志愿者证，着统一发放的志愿者服，保持仪容仪表整洁，不着奇装异服，不穿拖鞋，不化浓妆，不戴夸张饰物。\n
+6.普通话用语标准，精神饱满。\n
+.如遇观众咨询应热情主动，大方得体应答，不可态度傲慢、爱搭不理，避免与公众发生争吵、纠纷。\n
+8.未经允许不得从事任何与志愿服务无关的广告宣传活动。\n
+9.不得向服务对象收取任何财物报酬。\n
+10.志愿者在当日服务结束后，应及时持《南充市科技馆志愿者服务证》到志愿者办公室盖章。本轮服务结束后归还志愿者标识。\n
+11.表现消极、有损本馆和志原者形象及日常考核不合格的志原者，本馆将予以辞退，2年内不得再由请南充市科技馆志原者"
+            />
+
+        <!-- 所有的TextView -->
+
+        <!-- 报名表 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="五、报名表\n
+请仔细阅读以上内容后扫描下方二维码，谨慎填写报名表，便于准确建立志愿者资料库。"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp" />
+        <ImageView
+            android:src="@mipmap/volunteer_recruitment_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ImageView>
+
+    </LinearLayout>
+
+</ScrollView>
