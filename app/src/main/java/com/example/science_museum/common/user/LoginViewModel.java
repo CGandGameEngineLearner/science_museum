@@ -1,11 +1,10 @@
-package com.example.science_museum.common.login;
+package com.example.science_museum.common.user;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
-import com.example.science_museum.common.data.UserBean;
 import com.example.science_museum.common.data.UserRepository;
 import com.example.science_museum.common.data.UserStateRepository;
 

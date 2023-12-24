@@ -185,6 +185,25 @@ public class UserRepository {
             }
             return hexString.toString();
         }
+        protected boolean modifyUser(UserBean userBean) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(KEY_USERNAME, userBean.username);
+            values.put(KEY_PASSWORD, hashPassword(userBean.password)); // 对密码进行哈希处理
+            values.put(KEY_TELEPHONE_NUMBER, userBean.telephone_number);
+            values.put(KEY_GENDER, userBean.gender);
+            values.put(KEY_INTERESTS, userBean.interests);
+
+            try {
+                // 更新数据库中的记录，假设 uid 用作匹配条件
+                int rowsAffected = db.update(TABLE_NAME, values, KEY_UID + " = ?", new String[] { Long.toString(userBean.uid) });
+                db.close(); // 关闭数据库连接
+                return rowsAffected > 0; // 如果更新的行数大于0，则表示更新成功
+            } catch (SQLiteException e) {
+                Log.e("UserRepository SQLiteException", "modify user");
+                return false; // 发生异常时返回 false
+            }
+        }
     }
 
 
@@ -202,6 +221,11 @@ public class UserRepository {
     public UserBean getUserBeanByUID(long uid)
     {
         return mUserDataBaseHelper.getUserBeanByUID(uid);
+    }
+
+    public boolean modifyUser(UserBean userBean)
+    {
+        return mUserDataBaseHelper.modifyUser(userBean);
     }
 
 }

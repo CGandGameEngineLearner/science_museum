@@ -1,10 +1,8 @@
 package com.example.science_museum.ui.home;
 import com.example.science_museum.R;
-import com.example.science_museum.common.login.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 

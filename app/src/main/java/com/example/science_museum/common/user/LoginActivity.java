@@ -1,4 +1,4 @@
-package com.example.science_museum.common.login;
+package com.example.science_museum.common.user;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

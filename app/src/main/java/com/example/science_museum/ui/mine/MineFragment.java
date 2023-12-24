@@ -15,17 +15,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.science_museum.R;
-import com.example.science_museum.common.login.LoginActivity;
-import com.example.science_museum.common.signup.SignUpActivity;
-import com.example.science_museum.ui.home.news.NewsListActivity;
+import com.example.science_museum.common.user.LoginActivity;
+import com.example.science_museum.common.user.ModifyUserActivity;
+import com.example.science_museum.common.user.SignUpActivity;
 
 public class MineFragment extends Fragment {
 
     private MineViewModel mViewModel;
     public View mView;
-    private Button loginButton,signUpButton;
+    private Button loginButton,signUpButton,modifyButton;
     private TextView textViewUsername;
-    private static final int intentLoginResult=1;
+    private static final int intentLoginSuccessResult=1,intentModifySuccessResult=2;
 
     public static MineFragment newInstance() {
         return new MineFragment();
@@ -37,11 +37,12 @@ public class MineFragment extends Fragment {
         loginButton=mView.findViewById(R.id.buttonLogin);
         signUpButton=mView.findViewById(R.id.buttonSignUp);
         textViewUsername=mView.findViewById(R.id.editTextUsername);
+        modifyButton=mView.findViewById(R.id.buttonModify);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentLogin=new Intent(getActivity(), LoginActivity.class);
-                startActivityForResult(intentLogin,intentLoginResult);
+                startActivityForResult(intentLogin,intentLoginSuccessResult);
             }
         });
 
@@ -50,6 +51,13 @@ public class MineFragment extends Fragment {
             public void onClick(View v) {
                 Intent intentSignUp=new Intent(getActivity(), SignUpActivity.class);
                 startActivity(intentSignUp);
+            }
+        });
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentLogin=new Intent(getActivity(), ModifyUserActivity.class);
+                startActivityForResult(intentLogin,intentModifySuccessResult);
             }
         });
 
@@ -74,11 +82,14 @@ public class MineFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==intentLoginResult)
+        if(resultCode==intentLoginSuccessResult)
         {
             updateUserState();
         }
-
+        else if(requestCode==intentModifySuccessResult)
+        {
+            updateUserState();
+        }
     }
 
     public void updateUserState()
