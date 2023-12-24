@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         File dbFile = getApplicationContext().getDatabasePath("prefabricate_data.db");
         if (dbFile.exists()) {
             Log.d("Database","数据库已存在");
+            return;
         }
 
         // 确保目录存在

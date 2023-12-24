@@ -52,18 +52,16 @@ public class HomeFragment extends Fragment {
             imageViewList = mImgList;
         }
 
-        // 1. 返回要显示的条目内容, 创建条目
+
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            // container: 容器: ViewPager
-            // position: 当前要显示条目的位置 0 -> 4
-            //newPosition = position % 5
+
             int newPosition = position % imageViewList.size();
             ImageView img = imageViewList.get(newPosition);
-            // a. 把View对象添加到container中
+
             container.addView(img);
-            // b. 把View对象返回给框架, 适配器
+
             return img;
         }
 

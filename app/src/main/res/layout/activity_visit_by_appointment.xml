@@ -6,5 +6,94 @@
     android:layout_height="match_parent"
     tools:context="com.example.science_museum.ui.home.VisitByAppointmentActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="姓名："
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/editTextAccount"
+                android:layout_width="315dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="身份证号码："
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:background="@color/colorBlue"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:id="@+id/centeredTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="请选择预约日期"
+                    />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/dobEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:drawableRight="@android:drawable/ic_menu_my_calendar"
+                android:focusable="false"
+                android:hint="请选择日期"
+                android:inputType="none" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/buttonBooking"
+            android:layout_width="300dp"
+            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+            android:text="预约"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

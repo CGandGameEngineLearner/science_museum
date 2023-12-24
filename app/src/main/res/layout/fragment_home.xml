@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_weight="1"
-                    android:text="新闻列表"
+                    android:text="通知公告列表"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
 
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:text="更多新闻"
+                    android:text="更多通知"
                     android:textColor="#ffffff"
                     android:textSize="18sp" />
             </LinearLayout>
