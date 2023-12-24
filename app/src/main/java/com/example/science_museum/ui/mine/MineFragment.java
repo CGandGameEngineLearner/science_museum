@@ -2,10 +2,12 @@ package com.example.science_museum.ui.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,8 @@ public class MineFragment extends Fragment {
     private MineViewModel mViewModel;
     public View mView;
     private Button loginButton,signUpButton;
+    private TextView textViewUsername;
+    private static final int intentLoginResult=1;
 
     public static MineFragment newInstance() {
         return new MineFragment();
@@ -29,13 +33,15 @@ public class MineFragment extends Fragment {
 
     private void init()
     {
+        textViewUsername=mView.findViewById(R.id.editTextUserName);
         loginButton=mView.findViewById(R.id.buttonLogin);
         signUpButton=mView.findViewById(R.id.buttonSignUp);
+        textViewUsername=mView.findViewById(R.id.editTextUsername);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentLogin=new Intent(getActivity(), LoginActivity.class);
-                startActivity(intentLogin);
+                startActivityForResult(intentLogin,intentLoginResult);
             }
         });
 
@@ -62,6 +68,30 @@ public class MineFragment extends Fragment {
         mViewModel = ViewModelProviders.of(this).get(MineViewModel.class);
         // TODO: Use the ViewModel
         init();
+
+        updateUserState();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==intentLoginResult)
+        {
+            updateUserState();
+        }
+
+    }
+
+    public void updateUserState()
+    {
+        Log.d("MineFragment","checkUserState()");
+        if(mViewModel.isOnline())
+        {
+            textViewUsername.setText(mViewModel.getUsername());
+        }
+        else
+        {
+            textViewUsername.setText("未登录");
+        }
     }
 
 }

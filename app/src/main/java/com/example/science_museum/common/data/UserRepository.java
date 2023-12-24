@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,6 +16,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+
+import static androidx.room.util.CursorUtil.getColumnIndex;
 
 public class UserRepository {
 
@@ -37,10 +40,13 @@ public class UserRepository {
         private static final String KEY_TELEPHONE_NUMBER="telephone_number";
         private static final String KEY_PASSWORD="password";
 
-        private static final String queryLogin="select * from "+TABLE_NAME+" where "+
-                KEY_USERNAME+" = ?  and "+KEY_PASSWORD+" = ?";
+        private static final String QUERYLOGIN="select * from "+TABLE_NAME+" where "+
+                KEY_UID+" = ?  and "+KEY_PASSWORD+" = ?";
 
-        private static final String insertSignUp="insert into "+TABLE_NAME+" ("+KEY_UID+", "+KEY_USERNAME+", "+KEY_PASSWORD+
+        private static final String QUERYUSERBEAN="select * from "+TABLE_NAME+" where "+
+                KEY_UID+" = ?";
+
+        private static final String INSERTSIGNUP="insert into "+TABLE_NAME+" ("+KEY_USERNAME+", "+KEY_PASSWORD+
                 ", "+KEY_GENDER+", "+KEY_TELEPHONE_NUMBER+", "+KEY_INTERESTS+") values (?,?,?,?,?)";
 
 
@@ -58,16 +64,70 @@ public class UserRepository {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         }
+
+        protected UserBean getUserBeanByUID(long uid)
+        {
+            SQLiteDatabase db = mUserDataBaseHelper.getReadableDatabase();
+            UserBean result=new UserBean();
+            try {
+                Cursor cursor = db.rawQuery(QUERYUSERBEAN, new String[]{Long.toString(uid)});
+                if (cursor != null && cursor.moveToFirst()) {
+                    result.uid = cursor.getLong(getColumnIndex(cursor, "uid"));
+                    result.username = cursor.getString(getColumnIndex(cursor, "username"));
+                    result.telephone_number = cursor.getString(getColumnIndex(cursor, "telephone_number"));
+                    result.gender = cursor.getString(getColumnIndex(cursor, "gender"));
+                    result.interests = cursor.getString(getColumnIndex(cursor, "interests"));
+                    Log.d("UserRepository","query successed");
+                }
+                else
+                {
+                    Log.d("UserRepository","query failded");
+                    return new UserBean();
+                }
+            }
+            catch (SQLiteException e)
+            {
+                Log.e("UserRepository SQLiteException","query UserBeanByUID");
+                return new UserBean();
+            }
+            catch (CursorIndexOutOfBoundsException e)
+            {
+                Log.e("UserRepository CursorIndexOutOfBoundsException","query UserBeanByUID");
+                return new UserBean();
+            }
+            return result;
+        }
+
         protected boolean login(long uid, String password) {
             SQLiteDatabase db = mUserDataBaseHelper.getReadableDatabase();
+            Cursor cursor;
+//            Cursor cursor = db.query("users", null, null, null, null, null, null);
+//            long cuid=-1;
+//            if (cursor.moveToFirst()) {
+//                do {
+//                    cuid=cursor.getLong(cursor.getColumnIndex("uid"));
+//                    //Log.d("db",String.format("uid=%d",cuid));
+//                    // 获取每个用户的数据，例如：
+//                    String username = cursor.getString(cursor.getColumnIndex("username"));
+//                    String spassword = cursor.getString(cursor.getColumnIndex("password"));
+//                    //Log.d("db",String.format("username=%s",username));
+//                    //Log.d("db",String.format("password=%s",spassword));
+//                    // 获取其他字段数据
+//                } while (cursor.moveToNext());
+//            }
+
+
 
             // 获取密码哈希
             String passwordHash = hashPassword(password);
+            //Log.d("db signUp",String.format("password=%s",passwordHash));
 
             // 查询数据库
-            Cursor cursor = db.rawQuery(queryLogin, new String[]{Long.toString(uid), password});
+            cursor = db.rawQuery(QUERYLOGIN, new String[]{Long.toString(uid), passwordHash});
+            //String username = cursor.getString(cursor.getColumnIndex("username"));
 
             boolean loginSuccess = cursor.getCount() > 0;
+            Log.d("Login",String.format("Verify success?%b",loginSuccess));
             cursor.close();
 
             return loginSuccess;
@@ -75,6 +135,7 @@ public class UserRepository {
 
         protected long signUp(UserBean userBean) {
             userBean.password = hashPassword(userBean.password);//对密码进行加密
+            Log.d("db signUp",String.format("password=%s",userBean.password));
             SQLiteDatabase db = mUserDataBaseHelper.getReadableDatabase();
 
             ContentValues values = new ContentValues();
@@ -136,6 +197,11 @@ public class UserRepository {
     public long signUp(UserBean userBean)
     {
        return mUserDataBaseHelper.signUp(userBean);
+    }
+
+    public UserBean getUserBeanByUID(long uid)
+    {
+        return mUserDataBaseHelper.getUserBeanByUID(uid);
     }
 
 }

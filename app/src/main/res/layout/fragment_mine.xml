@@ -22,14 +22,14 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/qq_logo" />
+            android:src="@mipmap/ic_account_circle" />
         <TextView
-            android:id="@+id/userName"
+            android:id="@+id/editTextUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
-            android:text="admin"
+            android:text="未登录"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
 

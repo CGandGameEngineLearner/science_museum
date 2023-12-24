@@ -2,21 +2,16 @@ package com.example.science_museum.common.signup;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
 
 import com.example.science_museum.R;
 import com.example.science_museum.common.data.UserBean;
-import com.example.science_museum.common.login.LoginActivity;
-import com.example.science_museum.common.login.UserViewModel;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SignUpActivity extends AppCompatActivity {
