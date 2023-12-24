@@ -18,7 +18,10 @@ public class ModifyUserViewModel extends ViewModel {
         mContext=context;
         mUserRepository=new UserRepository(context);
     }
-
+    public UserBean getUserBean()
+    {
+        return mUserRepository.getUserBeanByUID(mUserStateRepository.getUID());
+    }
     public boolean modifyUser(UserBean userBean)
     {
         userBean.uid=mUserStateRepository.getUID();

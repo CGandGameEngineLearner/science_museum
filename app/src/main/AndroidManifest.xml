@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".common.user.ModifyUserActivity"></activity>
+        <activity android:name=".common.appointment.AppointmentsActivity"></activity>
+        <activity android:name=".common.user.ModifyUserActivity" />
         <activity android:name=".common.user.SignUpActivity" />
         <activity android:name=".common.user.LoginActivity" />
         <activity android:name=".ui.home.AboutMuseumActivity" />

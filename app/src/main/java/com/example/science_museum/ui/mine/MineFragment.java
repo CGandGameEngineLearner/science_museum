@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.science_museum.R;
+import com.example.science_museum.common.appointment.AppointmentsActivity;
+import com.example.science_museum.common.data.dao.Appointment;
 import com.example.science_museum.common.user.LoginActivity;
 import com.example.science_museum.common.user.ModifyUserActivity;
 import com.example.science_museum.common.user.SignUpActivity;
@@ -23,7 +25,7 @@ public class MineFragment extends Fragment {
 
     private MineViewModel mViewModel;
     public View mView;
-    private Button loginButton,signUpButton,modifyButton;
+    private Button loginButton,signUpButton,modifyButton,appointmentRecordButton;
     private TextView textViewUsername;
     private static final int intentLoginSuccessResult=1,intentModifySuccessResult=2;
 
@@ -38,6 +40,7 @@ public class MineFragment extends Fragment {
         signUpButton=mView.findViewById(R.id.buttonSignUp);
         textViewUsername=mView.findViewById(R.id.editTextUsername);
         modifyButton=mView.findViewById(R.id.buttonModify);
+        appointmentRecordButton=mView.findViewById(R.id.appointmentRecordButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,11 +59,17 @@ public class MineFragment extends Fragment {
         modifyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentLogin=new Intent(getActivity(), ModifyUserActivity.class);
-                startActivityForResult(intentLogin,intentModifySuccessResult);
+                Intent intentModify=new Intent(getActivity(), ModifyUserActivity.class);
+                startActivityForResult(intentModify,intentModifySuccessResult);
             }
         });
-
+        appointmentRecordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentAppointmentRecord=new Intent(getActivity(), AppointmentsActivity.class);
+                startActivity(intentAppointmentRecord);
+            }
+        });
     }
 
     @Override

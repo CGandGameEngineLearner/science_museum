@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UserBean userBean=new UserBean();
-
+                userBean.gender=editTextGender.getText().toString();
                 userBean.username=editTextUserName.getText().toString();
                 userBean.password=editTextPassword.getText().toString();
                 userBean.interests=editTextIntersts.getText().toString();

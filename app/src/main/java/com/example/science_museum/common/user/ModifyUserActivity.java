@@ -40,10 +40,15 @@ public class ModifyUserActivity extends AppCompatActivity {
                 userBean.interests=editTextIntersts.getText().toString();
                 userBean.telephone_number=editTextTelephoneNumber.getText().toString();
                 boolean successe=mModifyUserViewModel.modifyUser(userBean);
+                if(successe) {
+                    // 假设登录成功 返回码就为1
+                    Intent returnIntent = new Intent();
+                    setResult(1, returnIntent);
+                    finish();
+                }
                 createModifyAlertDiaLog(successe);
             }
         });
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,14 @@ public class ModifyUserActivity extends AppCompatActivity {
         {
             Intent intentLogin=new Intent(this, LoginActivity.class);
             startActivityForResult(intentLogin,intentLoginResult);
+        }
+        else
+        {
+            UserBean userBean=mModifyUserViewModel.getUserBean();
+            editTextUserName.setText(userBean.username);
+            editTextGender.setText(userBean.gender);
+            editTextIntersts.setText(userBean.interests);
+            editTextTelephoneNumber.setText(userBean.telephone_number);
         }
     }
     @Override
