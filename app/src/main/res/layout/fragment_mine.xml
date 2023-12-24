@@ -80,135 +80,28 @@
             android:gravity="center"
             android:text="个人中心"
             android:textColor="@android:color/black"
-            android:textSize="40sp" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="#F65151" />
-        <!-- 修改设置-->
-        <ImageView
+            android:textSize="35sp" />
+
+        <Button
+            android:layout_gravity="center"
+            android:text="修改用户信息"
+            android:id="@+id/volunteerRecruitmentButton"
+            android:textColor="#ffffff"
             android:layout_marginTop="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="start"
-            android:src="@mipmap/set" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="-50dp"
-            android:text="设置"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
-
-        <ImageView
-            android:layout_marginTop="-45dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:src="@mipmap/arrow" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="#DDDDDD" />
-
-
-        <!-- 修改密码-->
-        <ImageView
+            android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+            android:layout_width="300dp"
+            android:layout_height="51dp">
+        </Button>
+        <Button
+            android:layout_gravity="center"
+            android:text="预约记录"
+            android:id="@+id/appointmentRecordButton"
+            android:textColor="#ffffff"
             android:layout_marginTop="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="start"
-            android:src="@mipmap/password" />
+            android:background="@drawable/blue_clickable_rectangle_with_small_rounded_corners"
+            android:layout_width="300dp"
+            android:layout_height="51dp">
+        </Button>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="-50dp"
-            android:text="修改密码"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
-
-        <ImageView
-            android:layout_marginTop="-45dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:src="@mipmap/arrow" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="#DDDDDD" />
-
-        <!-- 作品详情-->
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="start"
-            android:src="@mipmap/details" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="-50dp"
-            android:text="作品详情"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
-
-        <ImageView
-            android:layout_marginTop="-45dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:src="@mipmap/arrow" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="#DDDDDD" />
-
-
-        <!-- 注销-->
-        <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="start"
-            android:src="@mipmap/off" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="-50dp"
-            android:text="注销"
-            android:textColor="@android:color/black"
-            android:textSize="25sp" />
-
-
-        <ImageView
-            android:layout_marginTop="-45dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="end"
-            android:src="@mipmap/arrow" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="#DDDDDD" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

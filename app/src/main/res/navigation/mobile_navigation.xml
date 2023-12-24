@@ -16,7 +16,7 @@
         android:id="@+id/navigation_explore"
         android:name="com.example.science_museum.ui.exhibit.ExhibitFragment"
         android:label="@string/exhibits"
-        tools:layout="@layout/exhibits_fragment" />
+        tools:layout="@layout/fragment_exhibits" />
 
 
     <fragment
